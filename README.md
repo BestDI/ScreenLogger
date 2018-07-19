@@ -36,3 +36,17 @@ now, you could use it:
 ```kotlin
 Logger.warn("TAG", "hello from button")
 ```
+
+#### use result
+
+1.request permission(above android 6.0)
+
+![](shots/permission.png)
+
+2.tracking log
+
+![](shots/track.png)
+
+3.log details
+
+![](shots/logdetails.png)
