@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="screenLoggerMarginSide">20dp</dimen>
+    <dimen name="loggerMarginSide">18dp</dimen>
 </resources>

@@ -1,6 +1,6 @@
 package co.bestdi.libs
 
-enum class LogLevel {
+internal enum class LoggerLevel {
 
     Trace {
         override val value: String

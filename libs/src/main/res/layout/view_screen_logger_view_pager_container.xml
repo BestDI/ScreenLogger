@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <co.bestdi.libs.views.ScreenLoggerViewPager
+        <co.bestdi.libs.views.LoggerViewPager
             android:id="@+id/vpScreenLogger"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -21,14 +21,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:textColor="@android:color/white" />
-        </co.bestdi.libs.views.ScreenLoggerViewPager>
+        </co.bestdi.libs.views.LoggerViewPager>
 
         <Button
             android:id="@+id/btnClearAllLogs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/screenLoggerClearAllLogsBtnBg"
-            android:text="@string/screen_logger_btn_clear_all_logs"
+            android:background="@color/loggerClearAllLogsBtnBg"
+            android:text="@string/logger_btn_clear_all_logs"
             android:textAlignment="center"
             android:textColor="@android:color/white" />
     </LinearLayout>
@@ -37,7 +37,7 @@
         android:id="@+id/tvLogDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/screenLoggerMarginSide"
+        android:layout_margin="@dimen/loggerMarginSide"
         android:isScrollContainer="true"
         android:scrollbars="vertical"
         android:textColor="@android:color/white"

@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import co.bestdi.libs.R
 
-internal class ScreenLoggerTitleView @JvmOverloads internal constructor(
+internal class LoggerTitleView @JvmOverloads internal constructor(
         context: Context?,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0

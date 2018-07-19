@@ -3,9 +3,9 @@ package co.bestdi.libs.views
 import android.content.Context
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
-import co.bestdi.libs.adapters.ScreenLoggerViewPagerAdapter
+import co.bestdi.libs.adapters.LoggerViewPagerAdapter
 
-internal class ScreenLoggerViewPager @JvmOverloads internal constructor(
+internal class LoggerViewPager @JvmOverloads internal constructor(
         context: Context,
         attrs: AttributeSet? = null
 ) : ViewPager(context, attrs) {
@@ -39,10 +39,10 @@ internal class ScreenLoggerViewPager @JvmOverloads internal constructor(
 
     private fun notifyOnTitleChanged(position: Int) {
         onTitleChangeListener?.onTitleChanged(
-                context.getString(ScreenLoggerViewPagerAdapter.getPageLogType(position).getTitleRes()))
+                context.getString(LoggerViewPagerAdapter.getPageLogType(position).getTitleRes()))
     }
 
     interface OnTitleChangeListener {
-        fun onTitleChanged(title: String?, leftButtonType: ScreenLoggerTitleView.LeftButtonType = ScreenLoggerTitleView.LeftButtonType.NONE)
+        fun onTitleChanged(title: String?, leftButtonType: LoggerTitleView.LeftButtonType = LoggerTitleView.LeftButtonType.NONE)
     }
 }

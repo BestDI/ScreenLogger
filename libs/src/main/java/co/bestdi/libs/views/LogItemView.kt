@@ -6,12 +6,12 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
-import co.bestdi.libs.LogLevel
+import co.bestdi.libs.LoggerLevel
 import co.bestdi.libs.R
 import co.bestdi.libs.ScreenLog
 import co.bestdi.libs.ScreenLog.TraceLog
 
-internal class ScreenLogItemView @JvmOverloads internal constructor(
+internal class LogItemView @JvmOverloads internal constructor(
         context: Context?,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
@@ -34,10 +34,10 @@ internal class ScreenLogItemView @JvmOverloads internal constructor(
 
     fun setData(screenLog: ScreenLog) {
         tvLog.text = screenLog.getReadableLogTitle()
-        if (screenLog is TraceLog) when (screenLog.logLevel) {
-            LogLevel.Error -> tvLog.setTextColor(context?.resources?.getColor(R.color.errorLogColor)
+        if (screenLog is TraceLog) when (screenLog.loggerLevel) {
+            LoggerLevel.Error -> tvLog.setTextColor(context?.resources?.getColor(R.color.errorLogColor)
                     ?: Color.parseColor("#FF1D23"))
-            LogLevel.Warn -> tvLog.setTextColor(context?.resources?.getColor(R.color.warnLogColor)
+            LoggerLevel.Warn -> tvLog.setTextColor(context?.resources?.getColor(R.color.warnLogColor)
                     ?: Color.parseColor("#FF7A10"))
             else -> tvLog.setTextColor(Color.WHITE)
         } else {

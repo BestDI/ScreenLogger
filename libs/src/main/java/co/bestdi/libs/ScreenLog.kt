@@ -16,7 +16,7 @@ internal sealed class ScreenLog(protected val timeInMillis: Long) : Comparable<S
 
     abstract fun getLogDetail(): String?
 
-    abstract val logType: LogType
+    abstract val loggerType: LoggerType
 
     abstract fun clone(): ScreenLog
 
@@ -30,7 +30,7 @@ internal sealed class ScreenLog(protected val timeInMillis: Long) : Comparable<S
 
     // Sealed Class
     abstract class APILog(timeInMillis: Long = System.currentTimeMillis()) : ScreenLog(timeInMillis) {
-        final override val logType: LogType = LogType.API
+        final override val loggerType: LoggerType = LoggerType.API
     }
 
     class RequestLog(
@@ -66,18 +66,18 @@ internal sealed class ScreenLog(protected val timeInMillis: Long) : Comparable<S
     // Sealed Class - TraceLog
     class TraceLog(private val tag: String,
                    private val text: String? = null,
-                   val logLevel: LogLevel,
+                   val loggerLevel: LoggerLevel,
                    timeInMillis: Long = System.currentTimeMillis()
     ) : ScreenLog(timeInMillis) {
-        override val logType: LogType
-            get() = LogType.TRACKING
+        override val loggerType: LoggerType
+            get() = LoggerType.TRACKING
 
         override fun getLogDetail(): String? = text
 
-        override fun clone() = TraceLog(tag, text, logLevel, timeInMillis)
+        override fun clone() = TraceLog(tag, text, loggerLevel, timeInMillis)
 
         override val logTitle: String
-            get() = logLevel.value + tag
+            get() = loggerLevel.value + tag
 
     }
 }

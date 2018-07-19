@@ -2,24 +2,24 @@ package co.bestdi.libs.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import co.bestdi.libs.LogType
+import co.bestdi.libs.LoggerType
 import co.bestdi.libs.OrderedList
 import co.bestdi.libs.ScreenLog
-import co.bestdi.libs.ScreenLoggerConstants
+import co.bestdi.libs.LoggerConstants
 import co.bestdi.libs.filterables.LogFilterable
 import co.bestdi.libs.filterables.LogTypeFilterable
-import co.bestdi.libs.views.ScreenLogItemView
+import co.bestdi.libs.views.LogItemView
 
-internal class ScreenLoggerListAdapter(
+internal class LoggerListAdapter(
         private val isListInAscendingOrder: Boolean,
-        logType: LogType
-) : RecyclerView.Adapter<ScreenLoggerListAdapter.ScreenLogViewHolder>() {
+        loggerType: LoggerType
+) : RecyclerView.Adapter<LoggerListAdapter.ScreenLogViewHolder>() {
     private val screenLogs: OrderedList<ScreenLog> = OrderedList(isListInAscendingOrder)
     var onLogCellClickListener: OnLogCellClickListener? = null
     private var logFilters: MutableList<LogFilterable> = arrayListOf()
 
     init {
-        logFilters.add(LogTypeFilterable(logType))
+        logFilters.add(LogTypeFilterable(loggerType))
     }
 
     override fun onBindViewHolder(holder: ScreenLogViewHolder, position: Int) {
@@ -31,7 +31,7 @@ internal class ScreenLoggerListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScreenLogViewHolder {
         return parent.let {
-            ScreenLogViewHolder(ScreenLogItemView(it.context))
+            ScreenLogViewHolder(LogItemView(it.context))
         }
     }
 
@@ -43,7 +43,7 @@ internal class ScreenLoggerListAdapter(
         val isLogAcceptable = !logFilters.any { it.isFilterLog(screenLog) }
         if (isLogAcceptable) {
             screenLogs.add(screenLog)
-            if (ScreenLoggerConstants.isListInAscendingOrder) {
+            if (LoggerConstants.isListInAscendingOrder) {
                 notifyItemInserted(screenLogs.size - 1)
             } else {
                 notifyItemInserted(0)
@@ -58,7 +58,7 @@ internal class ScreenLoggerListAdapter(
         if (filteredScreenLogs.isNotEmpty()) {
             val positionStart = this.screenLogs.size
             this.screenLogs.addAll(filteredScreenLogs)
-            if (ScreenLoggerConstants.isListInAscendingOrder) {
+            if (LoggerConstants.isListInAscendingOrder) {
                 notifyItemRangeInserted(positionStart, filteredScreenLogs.size)
             } else {
                 notifyItemRangeInserted(0, filteredScreenLogs.size)
@@ -71,7 +71,7 @@ internal class ScreenLoggerListAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ScreenLogViewHolder(itemView: ScreenLogItemView) : RecyclerView.ViewHolder(itemView) {
+    inner class ScreenLogViewHolder(itemView: LogItemView) : RecyclerView.ViewHolder(itemView) {
         private val screenLogItemView = itemView
 
         fun setData(screenLog: ScreenLog) {

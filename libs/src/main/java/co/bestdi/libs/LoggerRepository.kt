@@ -1,6 +1,6 @@
 package co.bestdi.libs
 
-object ScreenLogRepository {
+object LoggerRepository {
     private val screenLogs: MutableList<ScreenLog> = arrayListOf()
     private val screenLogObservers: MutableList<ScreenLogDataObserver> = arrayListOf()
 
@@ -10,7 +10,7 @@ object ScreenLogRepository {
     }
 
     internal fun addScreenLogs(screenLogs: Collection<ScreenLog>) {
-        ScreenLogRepository.screenLogs.addAll(screenLogs)
+        LoggerRepository.screenLogs.addAll(screenLogs)
         val clone = cloneOf(screenLogs)
         screenLogObservers.forEach { it.onScreenLogsAdded(clone) }
     }

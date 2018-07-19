@@ -4,10 +4,10 @@ import android.content.Context
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
-import co.bestdi.libs.LogType
-import co.bestdi.libs.views.ScreenLogListContainer
+import co.bestdi.libs.LoggerType
+import co.bestdi.libs.views.LogListContainer
 
-internal class ScreenLoggerViewPagerAdapter(val context: Context) : PagerAdapter() {
+internal class LoggerViewPagerAdapter(val context: Context) : PagerAdapter() {
     companion object {
         private const val PAGE_COUNT = 3
 
@@ -15,9 +15,9 @@ internal class ScreenLoggerViewPagerAdapter(val context: Context) : PagerAdapter
             return context.getString(getPageLogType(position).getTitleRes())
         }
 
-        fun getPageLogType(position: Int): LogType {
-            return LogType.valuesOf(position)
-                    ?: error("cannot find LogType for position $position")
+        fun getPageLogType(position: Int): LoggerType {
+            return LoggerType.valuesOf(position)
+                    ?: error("cannot find LoggerType for position $position")
         }
     }
 
@@ -30,7 +30,7 @@ internal class ScreenLoggerViewPagerAdapter(val context: Context) : PagerAdapter
     override fun getCount(): Int = PAGE_COUNT
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        return screenLogListContainers[position].apply {
+        return logListContainers[position].apply {
             container.addView(this)
         }
     }
@@ -46,8 +46,8 @@ internal class ScreenLoggerViewPagerAdapter(val context: Context) : PagerAdapter
         return getPageTitle(context, position)
     }
 
-    private lateinit var screenLogListContainers: MutableList<ScreenLogListContainer>
-    var onCellClickListener: ScreenLogListContainer.OnCellClickListener? = null
+    private lateinit var logListContainers: MutableList<LogListContainer>
+    var onCellClickListener: LogListContainer.OnCellClickListener? = null
         set(value) {
             if (field != value) {
                 field = value
@@ -56,15 +56,15 @@ internal class ScreenLoggerViewPagerAdapter(val context: Context) : PagerAdapter
         }
 
     private fun setupView() {
-        screenLogListContainers = arrayListOf()
-        with(screenLogListContainers) {
+        logListContainers = arrayListOf()
+        with(logListContainers) {
             (0 until PAGE_COUNT).forEach {
-                add(ScreenLogListContainer(context, logType = getPageLogType(it)))
+                add(LogListContainer(context, loggerType = getPageLogType(it)))
             }
         }
     }
 
     private fun setupOnCellClickListenerForScreenLogListContainers() {
-        screenLogListContainers.forEach { it.onCellClickListener = onCellClickListener }
+        logListContainers.forEach { it.onCellClickListener = onCellClickListener }
     }
 }

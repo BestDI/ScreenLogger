@@ -21,7 +21,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import co.bestdi.libs.ScreenLogger
+import co.bestdi.libs.Logger
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
@@ -46,12 +46,13 @@ internal class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             }
             false
         })
-        ScreenLogger.trace("LoginActivity", "hello")
+        Logger.trace("LoginActivity", "hello")
         email_sign_in_button.setOnClickListener { attemptLogin() }
         email_sign_in_button.postDelayed({
-            ScreenLogger.warn("LoginActivity", "hello from button")
-            ScreenLogger.sendRequest("LoginActivity", "request")
-            ScreenLogger.error("LoginActivity", "fds")
+            Logger.warn("LoginActivity", "hello from button")
+            Logger.request("LoginActivity", "request")
+            Logger.response("LoginActivity", "request", true)
+            Logger.error("LoginActivity", "fds")
         }, 5000)
     }
 

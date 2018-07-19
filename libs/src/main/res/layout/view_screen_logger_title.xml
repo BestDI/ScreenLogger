@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:text="@string/screen_logger_log_type_all"
+        android:text="@string/logger_log_type_all"
         android:textAlignment="center"
         android:textColor="@android:color/white" />
 

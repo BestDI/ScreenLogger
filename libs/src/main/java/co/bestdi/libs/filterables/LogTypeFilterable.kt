@@ -1,13 +1,13 @@
 package co.bestdi.libs.filterables
 
-import co.bestdi.libs.LogType
+import co.bestdi.libs.LoggerType
 import co.bestdi.libs.ScreenLog
 
-internal class LogTypeFilterable(private val logType: LogType) : LogFilterable {
+internal class LogTypeFilterable(private val loggerType: LoggerType) : LogFilterable {
     override fun isFilterLog(screenLog: ScreenLog): Boolean {
-        return when (logType) {
-            LogType.ALL -> false
-            else -> screenLog.logType != logType
+        return when (loggerType) {
+            LoggerType.ALL -> false
+            else -> screenLog.loggerType != loggerType
         }
     }
 }

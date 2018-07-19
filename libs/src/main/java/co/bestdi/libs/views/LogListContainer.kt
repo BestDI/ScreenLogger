@@ -7,19 +7,19 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import co.bestdi.libs.*
-import co.bestdi.libs.adapters.ScreenLoggerListAdapter
+import co.bestdi.libs.adapters.LoggerListAdapter
 
-internal class ScreenLogListContainer @JvmOverloads internal constructor(
+internal class LogListContainer @JvmOverloads internal constructor(
         context: Context?,
         attributeSet: AttributeSet? = null,
         defStyleAttr: Int = 0,
-        logType: LogType
+        loggerType: LoggerType
 ) : LinearLayout(context, attributeSet, defStyleAttr) {
     private lateinit var rvLogs: RecyclerView
 
     var onCellClickListener: OnCellClickListener? = null
 
-    private val listAdapter: ScreenLoggerListAdapter by lazy { ScreenLoggerListAdapter(ScreenLoggerConstants.isListInAscendingOrder, logType) }
+    private val listAdapter: LoggerListAdapter by lazy { LoggerListAdapter(LoggerConstants.isListInAscendingOrder, loggerType) }
 
     init {
         initView()
@@ -40,7 +40,7 @@ internal class ScreenLogListContainer @JvmOverloads internal constructor(
         with(listAdapter) {
             rvLogs.adapter = this
             rvLogs.layoutManager = LinearLayoutManager(context)
-            this.onLogCellClickListener = object : ScreenLoggerListAdapter.OnLogCellClickListener {
+            this.onLogCellClickListener = object : LoggerListAdapter.OnLogCellClickListener {
                 override fun onLogCellClicked(screenLog: ScreenLog) {
                     onCellClickListener?.onCellClicked(screenLog)
                 }
@@ -50,7 +50,7 @@ internal class ScreenLogListContainer @JvmOverloads internal constructor(
     }
 
     private fun setupScreenLogObservableForAdapter() {
-        ScreenLogRepository.addScreenLogObserver(object : ScreenLogRepository.ScreenLogDataObserver {
+        LoggerRepository.addScreenLogObserver(object : LoggerRepository.ScreenLogDataObserver {
             override fun onObserverAdded(initialScreenLogs: Collection<ScreenLog>) {
                 post {
                     listAdapter.onObserverAdded(initialScreenLogs)

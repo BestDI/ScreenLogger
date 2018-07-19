@@ -2,7 +2,7 @@ package co.bestdi.screenlogger
 
 import android.app.Application
 import android.arch.lifecycle.ProcessLifecycleOwner
-import co.bestdi.libs.ScreenLoggerLifecycleObserver
+import co.bestdi.libs.LoggerLifecycleObserver
 
 class MainApplication : Application() {
 
@@ -10,7 +10,7 @@ class MainApplication : Application() {
         super.onCreate()
 
         ProcessLifecycleOwner.get().lifecycle.apply {
-            addObserver(ScreenLoggerLifecycleObserver(this@MainApplication, true))
+            addObserver(LoggerLifecycleObserver(this@MainApplication, true))
         }
     }
 

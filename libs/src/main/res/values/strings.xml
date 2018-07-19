@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">libs</string>
-    <string name="screen_logger_btn_clear_all_logs">清除所有日志</string>
-    <string name="screen_logger_btn_close">关闭</string>
-    <string name="screen_logger_log_type_api">API</string>
-    <string name="screen_logger_log_type_tracking">Tracking</string>
-    <string name="screen_logger_log_type_all">All</string>
-    <string name="screen_logger_request_permission_rationale">We ask for Draw Overlay Permission to attach ScreenLogger onto the window</string>
+    <string name="logger_btn_clear_all_logs">清除所有日志</string>
+    <string name="logger_btn_close">关闭</string>
+    <string name="logger_log_type_api">API</string>
+    <string name="logger_log_type_tracking">Tracking</string>
+    <string name="logger_log_type_all">All</string>
+    <string name="logger_request_permission_rationale">We ask for Draw Overlay Permission to attach ScreenLogger onto the window</string>
 </resources>

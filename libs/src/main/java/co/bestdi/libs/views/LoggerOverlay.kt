@@ -16,7 +16,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import co.bestdi.libs.R
 
-internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
+internal class LoggerOverlay @JvmOverloads internal constructor(
         context: Context?,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
@@ -26,10 +26,10 @@ internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
     }
 
     private lateinit var tvVersion: TextView
-    private lateinit var titleView: ScreenLoggerTitleView
+    private lateinit var titleView: LoggerTitleView
     private lateinit var flScreenLoggerContainer: View
     private lateinit var cbScreenLogger: CheckBox
-    private lateinit var vpcScreenLogger: ScreenLoggerViewPagerContainer
+    private lateinit var vpcLogger: LoggerViewPagerContainer
     private lateinit var btnClose: Button
     private var isScreenLoggerVisible: Boolean = screenLoggerDefaultVisible
         set(value) {
@@ -54,13 +54,13 @@ internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
         orientation = LinearLayout.VERTICAL
         visibility = if (screenLoggerDefaultVisible) View.VISIBLE else View.GONE
         LayoutInflater.from(context).inflate(R.layout.view_screen_logger_overlay, this)
-        setBackgroundColor(ContextCompat.getColor(context, R.color.screenLoggerBackground))
+        setBackgroundColor(ContextCompat.getColor(context, R.color.loggerBackground))
     }
 
     private fun bindView() {
         tvVersion = findViewById(R.id.tvVersion)
         titleView = findViewById(R.id.titleView)
-        vpcScreenLogger = findViewById(R.id.vpcScreenLogger)
+        vpcLogger = findViewById(R.id.vpcScreenLogger)
         btnClose = findViewById(R.id.btnClose)
     }
 
@@ -73,15 +73,15 @@ internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
         cbScreenLogger.setOnCheckedChangeListener { buttonView, isChecked ->
             isScreenLoggerVisible = isChecked
         }
-        vpcScreenLogger.onTitleChangeListener = object : ScreenLoggerViewPager.OnTitleChangeListener {
-            override fun onTitleChanged(title: String?, leftButtonType: ScreenLoggerTitleView.LeftButtonType) {
+        vpcLogger.onTitleChangeListener = object : LoggerViewPager.OnTitleChangeListener {
+            override fun onTitleChanged(title: String?, leftButtonType: LoggerTitleView.LeftButtonType) {
                 updateTitleView(title, leftButtonType)
             }
         }
         btnClose.setOnClickListener { cbScreenLogger.isChecked = false }
-        titleView.onTitleViewClickListener = object : ScreenLoggerTitleView.OnTitleViewClickListener {
+        titleView.onTitleViewClickListener = object : LoggerTitleView.OnTitleViewClickListener {
             override fun onLeftBtnClicked() {
-                vpcScreenLogger.showLogList()
+                vpcLogger.showLogList()
             }
 
             override fun onTitleClicked() {
@@ -125,7 +125,7 @@ internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
                 getWindowLayoutParamType(),
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT)) {
-            windowManager.addView(this@ScreenLoggerOverlay, this)
+            windowManager.addView(this@LoggerOverlay, this)
         }
     }
 
@@ -151,7 +151,7 @@ internal class ScreenLoggerOverlay @JvmOverloads internal constructor(
         }
     }
 
-    private fun updateTitleView(title: String?, leftButtonType: ScreenLoggerTitleView.LeftButtonType) {
+    private fun updateTitleView(title: String?, leftButtonType: LoggerTitleView.LeftButtonType) {
         titleView.titleText = title
         titleView.leftButtonType = leftButtonType
     }
