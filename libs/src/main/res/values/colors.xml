@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="screenLoggerBackground">#99000000</color>
+    <color name="screenLoggerCheckboxBackground">#22FFFFFF</color>
+    <color name="screenLoggerClearAllLogsBtnBg">#EB8D23</color>
+    <color name="screenLoggerCloseBtnBg">#FC3151</color>
+    <color name="warnLogColor">#FF7A10</color>
+    <color name="errorLogColor">#FF1023</color>
+</resources>

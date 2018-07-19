@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <co.bestdi.libs.views.ScreenLoggerTitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/screenLoggerMarginSide"
+        android:layout_marginRight="@dimen/screenLoggerMarginSide" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/screenLoggerMarginSide"
+        android:layout_marginTop="@dimen/screenLoggerMarginSide"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <co.bestdi.libs.views.ScreenLoggerViewPagerContainer
+        android:id="@+id/vpcScreenLogger"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/screenLoggerCloseBtnBg"
+        android:text="@string/screen_logger_btn_close"
+        android:textColor="@android:color/white" />
+</merge>

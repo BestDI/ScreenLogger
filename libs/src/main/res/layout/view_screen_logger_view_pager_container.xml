@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <co.bestdi.libs.views.ScreenLoggerViewPager
+            android:id="@+id/vpScreenLogger"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <android.support.v4.view.PagerTabStrip
+                android:id="@+id/ptsScreenLogger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textColor="@android:color/white" />
+        </co.bestdi.libs.views.ScreenLoggerViewPager>
+
+        <Button
+            android:id="@+id/btnClearAllLogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/screenLoggerClearAllLogsBtnBg"
+            android:text="@string/screen_logger_btn_clear_all_logs"
+            android:textAlignment="center"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLogDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/screenLoggerMarginSide"
+        android:isScrollContainer="true"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</merge>
