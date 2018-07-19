@@ -1,5 +1,7 @@
 ### ScreenLogger -- 一个简单可用的屏幕日志插件
 
+
+[![](https://jitpack.io/v/BestDI/ScreenLogger.svg)](https://jitpack.io/#BestDI/ScreenLogger)
 ------
 
 #### How to Use it?
