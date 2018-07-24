@@ -28,6 +28,8 @@ import java.util.*
 
 typealias ScreenLogger = Logger
 
+private const val TAG = "LoginActivity"
+
 /**
  * A login screen that offers login via email/password.
  */
@@ -49,13 +51,14 @@ internal class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             }
             false
         })
-        Logger.trace("LoginActivity", "hello")
+        Logger.trace(TAG, "hello")
         email_sign_in_button.setOnClickListener { attemptLogin() }
         email_sign_in_button.postDelayed({
-            ScreenLogger.warn("LoginActivity", "hello from button")
-            ScreenLogger.request("LoginActivity", "request")
-            ScreenLogger.response("LoginActivity", "request", true)
-            ScreenLogger.error("LoginActivity", "fds")
+            ScreenLogger.warn(TAG, "hello from button")
+            ScreenLogger.request(TAG, "request")
+            ScreenLogger.response(TAG, "request", true)
+            ScreenLogger.error(TAG, "fds")
+            ScreenLogger.info(TAG, "fadsfaf")
         }, 5000)
     }
 

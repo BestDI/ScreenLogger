@@ -45,6 +45,7 @@ internal object LoggerStarter {
 
     private fun addScreenLoggerOverlayOnWindow(application: Application) {
         val context = application.applicationContext
+        // 对Android6.0 以上进行权限请求
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(context)) {
                 val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
@@ -54,15 +55,14 @@ internal object LoggerStarter {
                 Toast.makeText(context, context.getString(R.string.logger_request_permission_rationale), Toast.LENGTH_LONG).show()
             } else {
                 val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-                LoggerOverlay(context).apply {
+                LoggerOverlay(context).run {
                     this.attachWindowManager(windowManager)
-                    weakLoggerOverlay = WeakReference<LoggerOverlay>(this)
+                    weakLoggerOverlay = WeakReference(this)
                 }
             }
         } else {
-            // Added By Mia. For Version lower than 23. show overlay directly. 2018/06/25
             val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-            LoggerOverlay(context).apply {
+            LoggerOverlay(context).run {
                 this.attachWindowManager(windowManager)
                 weakLoggerOverlay = WeakReference(this)
             }

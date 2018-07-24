@@ -5,5 +5,5 @@
     <string name="logger_log_type_api">API</string>
     <string name="logger_log_type_tracking">Tracking</string>
     <string name="logger_log_type_all">All</string>
-    <string name="logger_request_permission_rationale">We ask for Draw Overlay Permission to attach ScreenLogger onto the window</string>
+    <string name="logger_request_permission_rationale">ScreenLogger需要屏幕窗口权限</string>
 </resources>
