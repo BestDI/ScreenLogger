@@ -25,6 +25,9 @@ import co.bestdi.libs.Logger
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
+
+typealias ScreenLogger = Logger
+
 /**
  * A login screen that offers login via email/password.
  */
@@ -49,10 +52,10 @@ internal class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         Logger.trace("LoginActivity", "hello")
         email_sign_in_button.setOnClickListener { attemptLogin() }
         email_sign_in_button.postDelayed({
-            Logger.warn("LoginActivity", "hello from button")
-            Logger.request("LoginActivity", "request")
-            Logger.response("LoginActivity", "request", true)
-            Logger.error("LoginActivity", "fds")
+            ScreenLogger.warn("LoginActivity", "hello from button")
+            ScreenLogger.request("LoginActivity", "request")
+            ScreenLogger.response("LoginActivity", "request", true)
+            ScreenLogger.error("LoginActivity", "fds")
         }, 5000)
     }
 

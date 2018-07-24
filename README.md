@@ -5,7 +5,9 @@
 ------
 
 #### How to Use it?
-1.Add it in your root build.gradle at the end of repositories:
+
+1. Add it in your root build.gradle at the end of repositories:
+
 ```groovy
 allprojects {
 	repositories {
@@ -14,20 +16,22 @@ allprojects {
 	}
 }
 ```
+
 Add the dependency
 ```groovy
 dependencies {
-        implementation 'com.github.BestDI:ScreenLogger:v1.0'
+    implementation 'com.github.BestDI:ScreenLogger:v1.0'
 }
 ```
 
-2.init in your application:
+2. init in your application:
 ```kotlin
 override fun onCreate() {
     super.onCreate()
 
     ProcessLifecycleOwner.get().lifecycle.apply {
-        addObserver(LoggerLifecycleObserver(this@MainApplication, true))
+        val isEnable = true // 可以通过isEnable的状态控制是否打开ScreenLog
+        addObserver(LoggerLifecycleObserver(this@MainApplication, isEnable))
     }
 }
 ```
@@ -36,6 +40,9 @@ now, you could use it:
 ```kotlin
 Logger.warn("TAG", "hello from button")
 ```
+
+or you could use:
+`typealias ScreenLogger = Logger`
 
 #### use result
 
